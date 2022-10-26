@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
+import 'package:virtual_tour_museum/widget/button.dart';
 
 class HomeMobileBody extends StatelessWidget {
   const HomeMobileBody({Key? key}) : super(key: key);
@@ -22,6 +23,11 @@ class HomeMobileBody extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
+                  padding: EdgeInsets.only(
+                    left: kDefaultPadding,
+                    right: kDefaultPadding,
+                    bottom: 36 + kDefaultPadding,
+                  ),
                   height: size.height * 0.2 - 27,
                   decoration: BoxDecoration(
                     color: kPrimaryColor,
@@ -29,6 +35,20 @@ class HomeMobileBody extends StatelessWidget {
                       bottomLeft: Radius.circular(36),
                       bottomRight: Radius.circular(36),
                     ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Hi, Jeremy!',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      Spacer(),
+                      RoundedButton(
+                          icon: Icons.notifications,
+                          onTap: () {},
+                          color: Colors.grey)
+                    ],
                   ),
                 ),
 
@@ -39,6 +59,7 @@ class HomeMobileBody extends StatelessWidget {
                   right: 0,
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
                     height: 54,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -49,6 +70,23 @@ class HomeMobileBody extends StatelessWidget {
                           blurRadius: 50,
                           color: kPrimaryColor.withOpacity(0.23),
                         ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            onChanged: (value) {},
+                            decoration: InputDecoration(
+                              hintText: "Search museum",
+                              hintStyle: TextStyle(
+                                  color: kPrimaryColor.withOpacity(0.5)),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Icon(Icons.search_outlined)
                       ],
                     ),
                   ),
