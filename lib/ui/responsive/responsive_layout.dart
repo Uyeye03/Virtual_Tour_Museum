@@ -11,6 +11,9 @@ class ResponsiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        // buat tampilan responsif, kalau kurang dari mobileWidth masuk ke mobileLayout
+        // kalau lebih besar dari mobileWidth masuk ke desktopLayout
+        // ukuran mobileWidth bisa diubah-ubah di file dimensions.dart
         if (constraints.maxWidth < mobileWidth) {
           return mobileLayout;
         } else {
