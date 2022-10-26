@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/ui/favorites.dart';
 import 'package:virtual_tour_museum/ui/home.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
+  WidgetsBinding wB = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: wB);
   runApp(MaterialApp(
     title: 'Virtual Tour Museum',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
     home: const MyApp(),
   ));
+  FlutterNativeSplash.remove();
 }
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
+  
 }
 
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
@@ -88,4 +94,6 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       ),
     );
   }
+  
 }
+
