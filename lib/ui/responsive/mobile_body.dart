@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
-import 'package:virtual_tour_museum/widget/navbar.dart';
 
 class HomeMobileBody extends StatelessWidget {
   const HomeMobileBody({Key? key}) : super(key: key);
