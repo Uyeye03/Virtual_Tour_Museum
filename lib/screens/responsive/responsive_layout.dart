@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:virtual_tour_museum/ui/responsive/dimensions.dart';
+import 'package:virtual_tour_museum/screens/responsive/dimensions.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileLayout;

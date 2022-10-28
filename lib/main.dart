@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_tour_museum/ui/favorites.dart';
-import 'package:virtual_tour_museum/ui/home.dart';
+import 'package:virtual_tour_museum/screens/favorites.dart';
+import 'package:virtual_tour_museum/screens/home.dart';
 
 void main() {
   runApp(MaterialApp(

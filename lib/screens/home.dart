@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_tour_museum/ui/responsive/desktop_body.dart';
-import 'package:virtual_tour_museum/ui/responsive/mobile_body.dart';
-import 'package:virtual_tour_museum/ui/responsive/responsive_layout.dart';
+import 'package:virtual_tour_museum/screens/responsive/desktop_body.dart';
+import 'package:virtual_tour_museum/screens/responsive/mobile_body.dart';
+import 'package:virtual_tour_museum/screens/responsive/responsive_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
