@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_tour_museum/screens/favorites.dart';
-import 'package:virtual_tour_museum/screens/home.dart';
+import 'package:virtual_tour_museum/constants.dart';
+import 'package:virtual_tour_museum/screens/explore/explore.dart';
+import 'package:virtual_tour_museum/screens/favorites/favorites.dart';
+import 'package:virtual_tour_museum/screens/home/home.dart';
+import 'package:virtual_tour_museum/screens/profile/profile.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'Virtual Tour Museum',
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
+    theme: ThemeData(
+        scaffoldBackgroundColor: kBackgroundColor,
+        fontFamily: "Poppins",
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: kBodyTextColor),
+        )),
     home: const MyApp(),
   ));
 }
@@ -34,22 +42,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   }
 
   int index = 0; // index of page
-  final screens = [
-    HomePage(),
-    Center(
-      child: Text(
-        'Explore',
-        style: TextStyle(fontSize: 72),
-      ),
-    ),
-    FavoritePage(),
-    Center(
-      child: Text(
-        'Profile',
-        style: TextStyle(fontSize: 72),
-      ),
-    )
-  ];
+  final screens = [HomePage(), ExplorePage(), FavoritePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +50,11 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: Colors.blue.shade100,
-            labelTextStyle: MaterialStateProperty.all(
-                TextStyle(fontSize: 14, fontWeight: FontWeight.w500))),
+          indicatorColor: Color(0xFF778DA9),
+          labelTextStyle: MaterialStateProperty.all(
+            TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+          ),
+        ),
         child: NavigationBar(
           height: 70,
           backgroundColor: Color(0xFFf1f5fb),
