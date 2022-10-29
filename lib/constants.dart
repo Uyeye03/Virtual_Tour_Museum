@@ -6,6 +6,7 @@ const kTitleTextColor = Color(0xFF303030);
 const kBodyTextColor = Color(0xFF4B4B4B);
 const kTextLightColor = Color(0xFF959595);
 const kPrimaryColor = Color(0xFF1B263B);
+const kSecondaryColor = Color(0xFF778DA9);
 final kShadowColor = Color(0xFFB7B7B7).withOpacity(.16);
 final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
 

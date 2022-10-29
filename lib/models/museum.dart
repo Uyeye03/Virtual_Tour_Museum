@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:virtual_tour_museum/models/comment.dart';
 
 class Museum {
   int id = 0;
   String nama = "";
+  String gambarUtama = "";
   String alamatLengkap = "";
   String alamatKota = "";
   String deskripsi = "";
@@ -14,6 +17,7 @@ class Museum {
   Museum(
       {required this.id,
       required this.nama,
+      required this.gambarUtama,
       required this.alamatLengkap,
       required this.alamatKota,
       required this.deskripsi,
@@ -24,6 +28,7 @@ class Museum {
   Museum.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nama = json['nama'];
+    gambarUtama = json['gambarUtama'];
     alamatLengkap = json['alamatLengkap'];
     alamatKota = json['alamatKota'];
     deskripsi = json['deskripsi'];
@@ -50,6 +55,16 @@ class Museum {
   // getter nama
   String getNama() {
     return nama;
+  }
+
+  // setter gambarUtama
+  void setGambarUtama(String gambarUtama) {
+    this.gambarUtama = gambarUtama;
+  }
+
+  // getter gambarUtama
+  String getGambarUtama() {
+    return gambarUtama;
   }
 
   // setter alamatLengkap
