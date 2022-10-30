@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
 
 class MuseumCard extends StatelessWidget {
+  final int index;
   final String name;
   final String image;
   final String address;
+  final int length;
 
   const MuseumCard(
       {Key? key,
+      required this.index,
       required this.name,
       required this.image,
-      required this.address})
+      required this.address,
+      required this.length})
       : super(key: key);
 
   @override
@@ -20,10 +24,18 @@ class MuseumCard extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 15),
+          // padding: (index != length - 1)
+          //     ? const EdgeInsets.only(left: kDefaultPadding)
+          //     : const EdgeInsets.symmetric(
+          //         horizontal: kDefaultPadding,
+          //       ),
+          padding: const EdgeInsets.only(
+              left: kDefaultPadding,
+              top: kDefaultPadding,
+              right: kDefaultPadding),
           child: Container(
-            height: 375,
-            width: 275,
+            height: size.height * 0.575,
+            width: size.width,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -93,7 +105,7 @@ class CardDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10,
+        horizontal: 15,
         vertical: kDefaultPadding,
       ),
       child: Row(
@@ -110,7 +122,7 @@ class CardDetail extends StatelessWidget {
                       name,
                       style: TextStyle(
                         color: Color(0xFFE0E1DD),
-                        fontSize: 18,
+                        fontSize: 22,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
