@@ -2,12 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/ui/favorites.dart';
 import 'package:virtual_tour_museum/ui/home.dart';
 
+import 'Screens/Welcome/welcome_screen.dart';
+import 'constants2.dart';
+
+// import 'screens/login_screen/login_screen.dart';
+
 void main() {
   runApp(MaterialApp(
-    title: 'Virtual Tour Museum',
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
-    home: const MyApp(),
+    title: 'Virtual Tour Museum',
+    theme: ThemeData(
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: Colors.white,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: kPrimaryColor,
+            shape: const StadiumBorder(),
+            maximumSize: const Size(double.infinity, 56),
+            minimumSize: const Size(double.infinity, 56),
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          fillColor: kPrimaryLightColor,
+          iconColor: kPrimaryColor,
+          prefixIconColor: kPrimaryColor,
+          contentPadding: EdgeInsets.symmetric(
+              horizontal: defaultPadding, vertical: defaultPadding),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide.none,
+          ),
+        )),
+    // theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
+    home: const WelcomeScreen(),
   ));
 }
 
