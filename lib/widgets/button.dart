@@ -15,14 +15,13 @@ class RoundedButton extends StatelessWidget {
       child: Container(
         width: 50.0,
         height: 50.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-        ),
+        decoration: BoxDecoration(shape: BoxShape.circle),
         child: Card(
           elevation: 0.5,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          color: Colors.grey[200],
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+              side: BorderSide(color: color, width: 1.0)),
+          color: null,
           child: Icon(
             icon,
             color: color,

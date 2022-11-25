@@ -1,52 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_tour_museum/Services/geolocator_service.dart';
-import 'package:virtual_tour_museum/ui/explore.dart';
-import 'package:virtual_tour_museum/ui/favorites.dart';
-import 'package:virtual_tour_museum/ui/home.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
-
 import 'Screens/Welcome/welcome_screen.dart';
 import 'constants2.dart';
 
+//gmaps import
+import 'package:virtual_tour_museum/Services/geolocator_service.dart';
+import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
+
+//screens import
 // import 'screens/login_screen/login_screen.dart';
+import 'package:virtual_tour_museum/constants.dart';
+import 'package:virtual_tour_museum/screens/explore/explore.dart';
+import 'package:virtual_tour_museum/screens/favorites/favorites.dart';
+import 'package:virtual_tour_museum/screens/home/home.dart';
+import 'package:virtual_tour_museum/screens/profile/profile.dart';
 
 void main() {
   WidgetsBinding wB = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: wB);
   runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Virtual Tour Museum',
-      theme: ThemeData(
-          primaryColor: kPrimaryColor,
-          scaffoldBackgroundColor: Colors.white,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: kPrimaryColor,
-              shape: const StadiumBorder(),
-              maximumSize: const Size(double.infinity, 56),
-              minimumSize: const Size(double.infinity, 56),
-            ),
-          ),
-          inputDecorationTheme: const InputDecorationTheme(
-            filled: true,
-            fillColor: kPrimaryLightColor,
-            iconColor: kPrimaryColor,
-            prefixIconColor: kPrimaryColor,
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: defaultPadding, vertical: defaultPadding),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              borderSide: BorderSide.none,
-            ),
-          )),
-      // theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
-      //ini nti di uncomment.. smtr di comment dlu mau coba"
-      // home: const WelcomeScreen(),
-      home: MyApp()));
-  FlutterNativeSplash.remove();
+    title: 'Virtual Tour Museum',
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+        scaffoldBackgroundColor: kBackgroundColor,
+        fontFamily: "Poppins",
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: kBodyTextColor),
+        )),
+    home: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -73,58 +56,49 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   }
 
   int index = 0; // index of page
-  final screens = [
-    HomePage(),
-    ExplorePage(),
-    FavoritePage(),
-    Center(
-      child: Text(
-        'Profile',
-        style: TextStyle(fontSize: 72),
-      ),
-    )
-  ];
+  final screens = [HomePage(), ExplorePage(), FavoritePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[index],
-        bottomNavigationBar: NavigationBarTheme(
-          data: NavigationBarThemeData(
-              indicatorColor: Colors.blue.shade100,
-              labelTextStyle: MaterialStateProperty.all(
-                  TextStyle(fontSize: 14, fontWeight: FontWeight.w500))),
-          child: FutureProvider(
-      initialData: Center(child: CircularProgressIndicator()),
-      create: (context) => locatorService.getLocation(),
-      child: NavigationBar(
-              height: 70,
-              backgroundColor: Color(0xFFf1f5fb),
-              labelBehavior:
-                  NavigationDestinationLabelBehavior.onlyShowSelected,
-              selectedIndex: index,
-              onDestinationSelected: (index) =>
-                  setState(() => this.index = index),
-              destinations: [
-                NavigationDestination(
-                    icon: Icon(Icons.home_outlined),
-                    selectedIcon: Icon(Icons.home),
-                    label: 'Home'),
-                NavigationDestination(
-                    icon: Icon(Icons.explore_outlined),
-                    selectedIcon: Icon(Icons.explore),
-                    label: 'Explore'),
-                NavigationDestination(
-                    icon: Icon(Icons.favorite_border),
-                    selectedIcon: Icon(Icons.favorite),
-                    label: 'Favorite'),
-                NavigationDestination(
-                    icon: Icon(Icons.person_outline),
-                    selectedIcon: Icon(Icons.person),
-                    label: 'Profile'),
-              ],
-            ),
+      body: screens[index],
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          indicatorColor: Color(0xFF778DA9),
+          labelTextStyle: MaterialStateProperty.all(
+            TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
           ),
-        ));
+        ),
+        child: FutureProvider(
+          initialData: Center(child: CircularProgressIndicator()),
+          create: (context) => locatorService.getLocation(),
+          child: NavigationBar(
+          height: 70,
+          backgroundColor: Color(0xFFf1f5fb),
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          selectedIndex: index,
+          onDestinationSelected: (index) => setState(() => this.index = index),
+          destinations: [
+            NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home),
+                label: 'Home'),
+            NavigationDestination(
+                icon: Icon(Icons.explore_outlined),
+                selectedIcon: Icon(Icons.explore),
+                label: 'Explore'),
+            NavigationDestination(
+                icon: Icon(Icons.favorite_border),
+                selectedIcon: Icon(Icons.favorite),
+                label: 'Favorite'),
+            NavigationDestination(
+                icon: Icon(Icons.person_outline),
+                selectedIcon: Icon(Icons.person),
+                label: 'Profile'),
+          ],
+        ),
+      ),
+    )
+    );
   }
 }

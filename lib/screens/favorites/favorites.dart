@@ -10,6 +10,10 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.amber[100],
+      ),
+    );
   }
 }
