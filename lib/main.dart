@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_tour_museum/Services/geolocator_service.dart';
 import 'package:virtual_tour_museum/ui/explore.dart';
 import 'package:virtual_tour_museum/ui/favorites.dart';
 import 'package:virtual_tour_museum/ui/home.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'Screens/Welcome/welcome_screen.dart';
 import 'constants2.dart';
@@ -42,7 +45,7 @@ void main() {
       // theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
       //ini nti di uncomment.. smtr di comment dlu mau coba"
       // home: const WelcomeScreen(),
-      home: const MyApp()));
+      home: MyApp()));
   FlutterNativeSplash.remove();
 }
 
@@ -55,6 +58,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  final locatorService = GeolocatorService();
 
   @override
   void initState() {
@@ -84,38 +88,43 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[index],
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-            indicatorColor: Colors.blue.shade100,
-            labelTextStyle: MaterialStateProperty.all(
-                TextStyle(fontSize: 14, fontWeight: FontWeight.w500))),
-        child: NavigationBar(
-          height: 70,
-          backgroundColor: Color(0xFFf1f5fb),
-          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          selectedIndex: index,
-          onDestinationSelected: (index) => setState(() => this.index = index),
-          destinations: [
-            NavigationDestination(
-                icon: Icon(Icons.home_outlined),
-                selectedIcon: Icon(Icons.home),
-                label: 'Home'),
-            NavigationDestination(
-                icon: Icon(Icons.explore_outlined),
-                selectedIcon: Icon(Icons.explore),
-                label: 'Explore'),
-            NavigationDestination(
-                icon: Icon(Icons.favorite_border),
-                selectedIcon: Icon(Icons.favorite),
-                label: 'Favorite'),
-            NavigationDestination(
-                icon: Icon(Icons.person_outline),
-                selectedIcon: Icon(Icons.person),
-                label: 'Profile'),
-          ],
-        ),
-      ),
-    );
+        body: screens[index],
+        bottomNavigationBar: NavigationBarTheme(
+          data: NavigationBarThemeData(
+              indicatorColor: Colors.blue.shade100,
+              labelTextStyle: MaterialStateProperty.all(
+                  TextStyle(fontSize: 14, fontWeight: FontWeight.w500))),
+          child: FutureProvider(
+      initialData: Center(child: CircularProgressIndicator()),
+      create: (context) => locatorService.getLocation(),
+      child: NavigationBar(
+              height: 70,
+              backgroundColor: Color(0xFFf1f5fb),
+              labelBehavior:
+                  NavigationDestinationLabelBehavior.onlyShowSelected,
+              selectedIndex: index,
+              onDestinationSelected: (index) =>
+                  setState(() => this.index = index),
+              destinations: [
+                NavigationDestination(
+                    icon: Icon(Icons.home_outlined),
+                    selectedIcon: Icon(Icons.home),
+                    label: 'Home'),
+                NavigationDestination(
+                    icon: Icon(Icons.explore_outlined),
+                    selectedIcon: Icon(Icons.explore),
+                    label: 'Explore'),
+                NavigationDestination(
+                    icon: Icon(Icons.favorite_border),
+                    selectedIcon: Icon(Icons.favorite),
+                    label: 'Favorite'),
+                NavigationDestination(
+                    icon: Icon(Icons.person_outline),
+                    selectedIcon: Icon(Icons.person),
+                    label: 'Profile'),
+              ],
+            ),
+          ),
+        ));
   }
 }
