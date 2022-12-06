@@ -17,13 +17,14 @@ class HomeHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(padding: const EdgeInsets.only(top: 15)),
             Image.asset(
               'assets/icons/logo.png',
-              height: 50,
+              height: 45,
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

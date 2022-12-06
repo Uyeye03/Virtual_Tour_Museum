@@ -133,7 +133,8 @@ class _SignUpFormState extends State<SignUpForm> {
       ProgressDialog pd = ProgressDialog(context: context);
       // pd.show(max: 100, msg: 'Loading...');
       final response = await http
-          .post(Uri.parse('http://127.0.0.1:8000/api/auth/register'), body: {
+          //ini utk android emulator
+          .post(Uri.parse('http://10.0.2.2:8000/api/auth/login'), body: {
         'email': email.text,
         'name': username.text,
         'password': createPass.text,
@@ -141,6 +142,15 @@ class _SignUpFormState extends State<SignUpForm> {
       }, headers: {
         'Accept': 'application/json'
       });
+      //ini buat di local / laptop
+      //     .post(Uri.parse('http://127.0.0.1:8000/api/auth/register'), body: {
+      //   'email': email.text,
+      //   'name': username.text,
+      //   'password': createPass.text,
+      //   'password_confirmation': confirmPass.text
+      // }, headers: {
+      //   'Accept': 'application/json'
+      // });
       if (response.statusCode == 200) {
         Alert(
                 context: context,

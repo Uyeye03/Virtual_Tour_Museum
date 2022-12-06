@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants2.dart';
-import '../../../main.dart';
+import '../../../main3.dart';
 import '../../Signup/signup_screen.dart';
 
 class LoginForm extends StatefulWidget {
@@ -99,7 +99,10 @@ class _LoginFormState extends State<LoginForm> {
     ProgressDialog pd = ProgressDialog(context: context);
     // pd.show(max: 100, msg: 'Loading...');
     final response = await http.post(
-        Uri.parse('http://127.0.0.1:8000/api/auth/login'),
+        //ini utk web / phone
+        // Uri.parse('http://127.0.0.1:8000/api/auth/login'),
+        //ini utk android emulator
+        Uri.parse('http://10.0.2.2:8000/api/auth/login'),
         body: {'email': email.text, 'password': pass.text},
         headers: {'Accept': 'application/json'});
     if (response.statusCode == 200) {
@@ -116,12 +119,14 @@ class _LoginFormState extends State<LoginForm> {
       // String value = await storage.read(key: key);
       await storage.write(key: 'jwt', value: responseJson);
 
+      
       // var value = await storage.read(key: 'jwt');
       // Alert(context: context, title: value.toString(), type: AlertType.info)
       //     .show();
       // pd.close();
       // pd.update(value: 100);
     } else {
+      final responseJson = jsonDecode(response.body)['token'];
       Alert(context: context, title: "Login Gagal", type: AlertType.error)
           .show();
       email.text = "";

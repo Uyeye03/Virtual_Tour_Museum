@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
-class GeolocatorService {
+class GeolocatorService{
   Future<Position> getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;

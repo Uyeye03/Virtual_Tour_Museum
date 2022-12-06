@@ -13,8 +13,7 @@ class TabBarSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-          vertical: kDefaultPadding, horizontal: kDefaultPadding),
+      padding: const EdgeInsets.fromLTRB(kDefaultPadding,kDefaultPadding,kDefaultPadding, 0),
       child: Align(
         alignment: Alignment.centerLeft,
         child: TabBar(

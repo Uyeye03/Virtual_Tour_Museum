@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
+import 'package:virtual_tour_museum/models/museum.dart';
 
 class MuseumCard extends StatelessWidget {
   final int index;
@@ -72,6 +73,8 @@ class CardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
@@ -137,15 +140,19 @@ class CardDetail extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Expanded(
-                            child: Text(
-                              address,
-                              style: TextStyle(
-                                  color: Color(0xFFE0E1DD),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ),
+                          // child: Expanded(
+                                child: Text(
+                                  address,
+                                  style: TextStyle(
+                                      color: Color(0xFFE0E1DD),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              // ),
+                          // Row(
+                          //   children: [
+                              
+                            // ]
                         )
                       ],
                     ),
