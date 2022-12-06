@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_tour_museum/models/museum.dart';
+import 'package:virtual_tour_museum/screens/explore/explore_section.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -10,9 +12,32 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.green[100],
+    var size = MediaQuery.of(context).size;
+
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ExploreSection(
+              museums: recent,
+              sectionTitle: "City Highlight",
+              sectionDescription: "Museum Terpopuler di Setiap Kota",
+            ),
+            ExploreSection(
+              museums: rating,
+              sectionTitle: "Historical Museum",
+              sectionDescription: "Lihat Museum-museum Sejarah di Indonesia",
+            ),
+            ExploreSection(
+              museums: popular,
+              sectionTitle: "Archaelogical Museum",
+              sectionDescription:
+                  "Berisikan Peninggalan Sejarah Kerajaan di Indonesia",
+            ),
+          ],
+        ),
       ),
     );
   }

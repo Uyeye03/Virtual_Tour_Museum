@@ -22,9 +22,14 @@ class TabBarSection extends StatelessWidget {
           controller: _tabController,
           labelColor: kPrimaryColor,
           unselectedLabelColor: kSecondaryColor,
+          unselectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontFamily: "Cera Round Pro",
+          ),
           labelStyle: const TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
+            fontFamily: "Cera Round Pro",
           ),
           indicatorColor: kPrimaryColor,
           tabs: const [

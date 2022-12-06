@@ -34,6 +34,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  readmore: ^2.1.0
+  webview_flutter:
+  url_launcher: ^6.0.10
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +90,20 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-Medium.ttf
           weight: 600
         - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+          weight: 700
+    - family: Cera Round Pro
+      fonts:
+        - asset: assets/fonts/cera-round-pro/Fontspring-DEMO-ceraroundpro-regular.otf
+        - asset: assets/fonts/cera-round-pro/Fontspring-DEMO-ceraroundpro-medium.otf
+          weight: 600
+        - asset: assets/fonts/cera-round-pro/Fontspring-DEMO-ceraroundpro-bold.otf
+          weight: 700
+    - family: Cera Round Pro 2
+      fonts:
+        - asset: assets/fonts/cera-round-pro-2/TypeMates - CeraRoundPro-Regular.otf
+        - asset: assets/fonts/cera-round-pro-2/TypeMates - CeraRoundPro-Medium.otf
+          weight: 600
+        - asset: assets/fonts/cera-round-pro-2/TypeMates - CeraRoundPro-Bold.otf
           weight: 700
     # - family: Schyler
     #   fonts:

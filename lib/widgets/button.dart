@@ -5,7 +5,9 @@ class RoundedButton extends StatelessWidget {
   final VoidCallback onTap;
   final Color color;
 
-  RoundedButton({required this.icon, required this.onTap, required this.color});
+  const RoundedButton(
+      {Key? key, required this.icon, required this.onTap, required this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +21,14 @@ class RoundedButton extends StatelessWidget {
         child: Card(
           elevation: 0.5,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-              side: BorderSide(color: color, width: 1.0)),
+            borderRadius: BorderRadius.circular(50),
+            side: BorderSide(color: color, width: 2.0),
+          ),
           color: null,
           child: Icon(
             icon,
             color: color,
-            size: 17.0,
+            size: 25.0,
           ),
         ),
       ),

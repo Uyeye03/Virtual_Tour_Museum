@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
 
-class MuseumCard extends StatelessWidget {
+class FavoriteCard extends StatelessWidget {
   final int index;
   final int length;
   final Museum museum;
 
-  const MuseumCard({
+  const FavoriteCard({
     Key? key,
     required this.index,
     required this.length,
@@ -21,21 +21,10 @@ class MuseumCard extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: (index != length - 1)
-              ? const EdgeInsets.only(left: kDefaultPadding)
-              : const EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding,
-                ),
-          // padding: (index != length - 1)
-          //     ? const EdgeInsets.only(
-          //         left: kDefaultPadding,
-          //         top: kDefaultPadding,
-          //         right: kDefaultPadding)
-          //     : const EdgeInsets.all(kDefaultPadding),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Container(
-            height: size.height * 0.55,
-            // width: size.width * 0.85,
-            width: size.width * 0.75,
+            height: 275,
+            width: size.width,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -231,7 +220,7 @@ class CardDetail extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.favorite_border_rounded),
+                  icon: const Icon(Icons.favorite),
                   color: const Color(0xFFDA3E52),
                   iconSize: 30,
                   onPressed: () {/* Your code */},

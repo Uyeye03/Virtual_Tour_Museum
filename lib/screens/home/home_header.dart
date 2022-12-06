@@ -12,11 +12,12 @@ class HomeHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(
           left: kDefaultPadding, top: kDefaultPadding, right: kDefaultPadding),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // logo
             Image.asset(
               'assets/icons/logo.png',
               height: 50,
@@ -27,11 +28,12 @@ class HomeHeader extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // tag line
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Discover',
                           style: TextStyle(
                             fontSize: 30,
@@ -42,18 +44,22 @@ class HomeHeader extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: RichText(
-                            text: TextSpan(
+                            text: const TextSpan(
                               text: 'Get Immersed in ',
                               style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: kTextLightColor),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Cera Round Pro',
+                                color: kTextLightColor,
+                              ),
                               children: [
                                 TextSpan(
                                   text: "New Experience.",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: kTextLightColor),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: kTextLightColor,
+                                  ),
                                 ),
                               ],
                             ),
@@ -62,10 +68,13 @@ class HomeHeader extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  // notification button
                   RoundedButton(
-                      icon: Icons.notifications,
-                      onTap: () {},
-                      color: kTitleTextColor),
+                    icon: Icons.search_rounded,
+                    onTap: () {},
+                    color: kTitleTextColor,
+                  ),
                 ],
               ),
             )
