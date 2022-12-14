@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:virtual_tour_museum/models/comment.dart';
 
 class Museum {

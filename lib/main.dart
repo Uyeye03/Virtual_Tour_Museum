@@ -10,7 +10,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       scaffoldBackgroundColor: kBackgroundColor,
-      fontFamily: "Cera Round Pro",
+      fontFamily: "Cera Round Pro 2",
       textTheme: const TextTheme(
         bodyText1: TextStyle(color: kBodyTextColor),
       ),

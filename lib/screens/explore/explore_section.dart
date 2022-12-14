@@ -137,6 +137,8 @@ class SectionHeading extends StatelessWidget {
             ),
           ),
 
+          const SizedBox(width: 10),
+
           // button explore more
           TextButton(
             onPressed: () {

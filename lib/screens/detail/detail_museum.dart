@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
-import 'package:virtual_tour_museum/screens/detail/view_museum.dart';
+import 'package:virtual_tour_museum/screens/detail/detail_view_museum.dart';
 import 'package:virtual_tour_museum/widgets/comment_card.dart';
 
 class DetailMuseum extends StatefulWidget {

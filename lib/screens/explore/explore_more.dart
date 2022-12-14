@@ -20,9 +20,46 @@ class _ExploreMoreState extends State<ExploreMore> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            title: Text(widget.sectionTitle),
+            backgroundColor: const Color(0xFF89B0AE),
+          ),
+        ],
+        body: ListView.builder(
+          itemCount: widget.museums.length,
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailMuseum(
+                      museum: widget.museums[index],
+                    ),
+                  ),
+                );
+              },
+              child: ExploreMoreCard(
+                size: size,
+                museum: widget.museums[index],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    return Scaffold(
       appBar: AppBar(
         title: Text(widget.sectionTitle),
-        backgroundColor: Color(0xFF89B0AE),
+        backgroundColor: const Color(0xFF89B0AE),
       ),
       body: Container(
         child: ListView.builder(

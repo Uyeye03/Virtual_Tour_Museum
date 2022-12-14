@@ -31,6 +31,7 @@ class _ViewMuseumState extends State<ViewMuseum> {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
+          backgroundColor: const Color(0xFF89B0AE),
         ),
         body: WebView(
           initialUrl: widget.museumUrl,
@@ -47,6 +48,7 @@ class _ViewMuseumState extends State<ViewMuseum> {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
+          backgroundColor: const Color(0xFF89B0AE),
         ),
 
         // This trailing comma makes auto-formatting nicer for build methods.

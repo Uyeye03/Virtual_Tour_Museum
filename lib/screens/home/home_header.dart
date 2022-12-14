@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
+import 'package:virtual_tour_museum/models/museum.dart';
+import 'package:virtual_tour_museum/screens/search/search.dart';
 import 'package:virtual_tour_museum/widgets/button.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -69,10 +71,19 @@ class HomeHeader extends StatelessWidget {
                     ),
                   ),
 
-                  // notification button
+                  // search page button
                   RoundedButton(
                     icon: Icons.search_rounded,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchPage(
+                            museums: popular,
+                          ),
+                        ),
+                      );
+                    },
                     color: kTitleTextColor,
                   ),
                 ],
