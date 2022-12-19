@@ -154,7 +154,7 @@ class Museum {
 }
 
 Museum museum_1 = Museum(
-  id: 0,
+  id: 1,
   nama: 'Museum 10 November',
   gambarUtama: 'museum_10_november.jpg',
   alamatLengkap:
@@ -173,7 +173,7 @@ Museum museum_1 = Museum(
 );
 
 Museum museum_2 = Museum(
-  id: 1,
+  id: 2,
   nama: 'Museum Majapahit',
   gambarUtama: 'museum_majapahit_trowulan.jpg',
   alamatLengkap: 'Pendopo Agung St, Ngelinguk, Trowulan, Mojokerto, East Java',
@@ -191,7 +191,7 @@ Museum museum_2 = Museum(
 );
 
 Museum museum_3 = Museum(
-  id: 2,
+  id: 3,
   nama: 'Museum Pendidikan Surabaya',
   gambarUtama: 'museum_pendidikan_surabaya.jpg',
   alamatLengkap: 'Genteng Kali St. No.10, Genteng, Surabaya City, East Java',

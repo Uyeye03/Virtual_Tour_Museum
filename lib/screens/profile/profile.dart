@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:virtual_tour_museum/screens/login/Screens/Login/login_screen.dart';
+import 'package:virtual_tour_museum/screens/profile/aboutUs.dart';
+import 'package:virtual_tour_museum/screens/profile/privacyPolicy.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -125,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildAbout() {
-    //Citizen Journalism
+    // About us
     return Padding(
       padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
@@ -142,7 +144,13 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.circular(10),
             )),
         onPressed: () {
-          //navigate ke citizen journalism
+          // navigate ke about us
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AboutUsPage(),
+            ),
+          );
         },
         label: const Text(
           "About",
@@ -208,6 +216,12 @@ class _ProfilePageState extends State<ProfilePage> {
             )),
         onPressed: () {
           // navigate ke Privacy and Policy
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PrivacyPolicyPage(),
+            ),
+          );
         },
         label: const Text(
           "Privacy and Policy",

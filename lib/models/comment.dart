@@ -74,7 +74,7 @@ class Comment {
 
 Comment comment1 = Comment(
   id: 1,
-  museumId: 0,
+  museumId: 1,
   namaPengunggah: "Wendy Santoso",
   tanggalUnggah: "2022-09-24",
   komentar:
@@ -82,7 +82,7 @@ Comment comment1 = Comment(
 );
 Comment comment2 = Comment(
   id: 2,
-  museumId: 0,
+  museumId: 1,
   namaPengunggah: "Clarissa Angelia",
   tanggalUnggah: "2022-09-27",
   komentar:
@@ -90,7 +90,7 @@ Comment comment2 = Comment(
 );
 Comment comment3 = Comment(
   id: 3,
-  museumId: 1,
+  museumId: 2,
   namaPengunggah: "Jennifer Oentoro",
   tanggalUnggah: "2022-09-30",
   komentar:
@@ -98,7 +98,7 @@ Comment comment3 = Comment(
 );
 Comment comment4 = Comment(
   id: 4,
-  museumId: 1,
+  museumId: 2,
   namaPengunggah: "Eric Tedja",
   tanggalUnggah: "2022-10-05",
   komentar:
@@ -106,7 +106,7 @@ Comment comment4 = Comment(
 );
 Comment comment5 = Comment(
   id: 5,
-  museumId: 2,
+  museumId: 3,
   namaPengunggah: "Jeremy Dion P.",
   tanggalUnggah: "2022-10-10",
   komentar:
@@ -114,7 +114,7 @@ Comment comment5 = Comment(
 );
 Comment comment6 = Comment(
   id: 6,
-  museumId: 2,
+  museumId: 3,
   namaPengunggah: "Juan Christopher R. T.",
   tanggalUnggah: "2022-10-18",
   komentar:
