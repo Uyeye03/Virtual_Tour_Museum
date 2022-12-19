@@ -17,75 +17,76 @@ class ExploreMore extends StatefulWidget {
 class _ExploreMoreState extends State<ExploreMore> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            title: Text(widget.sectionTitle),
-            backgroundColor: const Color(0xFF89B0AE),
+      body: SafeArea(
+        child: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverAppBar(
+              floating: true,
+              snap: true,
+              title: Text(widget.sectionTitle),
+              backgroundColor: const Color(0xFF89B0AE),
+            ),
+          ],
+          body: ListView.builder(
+            itemCount: widget.museums.length,
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailMuseum(
+                        museum: widget.museums[index],
+                      ),
+                    ),
+                  );
+                },
+                child: ExploreMoreCard(
+                  index: index,
+                  length: widget.museums.length,
+                  museum: widget.museums[index],
+                ),
+              );
+            },
           ),
-        ],
-        body: ListView.builder(
-          itemCount: widget.museums.length,
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailMuseum(
-                      museum: widget.museums[index],
-                    ),
-                  ),
-                );
-              },
-              child: ExploreMoreCard(
-                size: size,
-                museum: widget.museums[index],
-              ),
-            );
-          },
         ),
       ),
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.sectionTitle),
-        backgroundColor: const Color(0xFF89B0AE),
-      ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: widget.museums.length,
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailMuseum(
-                      museum: widget.museums[index],
-                    ),
-                  ),
-                );
-              },
-              child: ExploreMoreCard(
-                size: size,
-                museum: widget.museums[index],
-              ),
-            );
-          },
-        ),
-      ),
-    );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text(widget.sectionTitle),
+    //     backgroundColor: const Color(0xFF89B0AE),
+    //   ),
+    //   body: Container(
+    //     child: ListView.builder(
+    //       itemCount: widget.museums.length,
+    //       physics: const BouncingScrollPhysics(),
+    //       shrinkWrap: true,
+    //       itemBuilder: (context, index) {
+    //         return InkWell(
+    //           onTap: () {
+    //             Navigator.push(
+    //               context,
+    //               MaterialPageRoute(
+    //                 builder: (context) => DetailMuseum(
+    //                   museum: widget.museums[index],
+    //                 ),
+    //               ),
+    //             );
+    //           },
+    //           child: ExploreMoreCard(
+    //             size: size,
+    //             museum: widget.museums[index],
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 }

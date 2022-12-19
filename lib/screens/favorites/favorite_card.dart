@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_tour_museum/constants.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
+import 'package:virtual_tour_museum/models/user.dart';
 
 class FavoriteCard extends StatelessWidget {
   final int index;
@@ -21,7 +22,12 @@ class FavoriteCard extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.only(
+            left: 20,
+            top: (index == 0) ? 20 : 10,
+            right: 20,
+            bottom: (index == length - 1) ? 20 : 10,
+          ),
           child: Container(
             height: 275,
             width: size.width,
@@ -41,9 +47,7 @@ class FavoriteCard extends StatelessWidget {
               ),
             ),
             child: CardBody(
-              name: museum.getNama(),
-              city: museum.getAlamatKota(),
-              rating: museum.getRating(),
+              museum: museum,
             ),
           ),
         ),
@@ -55,14 +59,10 @@ class FavoriteCard extends StatelessWidget {
 class CardBody extends StatelessWidget {
   const CardBody({
     Key? key,
-    required this.name,
-    required this.city,
-    required this.rating,
+    required this.museum,
   }) : super(key: key);
 
-  final String name;
-  final String city;
-  final double rating;
+  final Museum museum;
 
   @override
   Widget build(BuildContext context) {
@@ -92,25 +92,58 @@ class CardBody extends StatelessWidget {
           ), //BoxShadow
         ],
       ),
-      child: CardDetail(name: name, city: city, rating: rating),
+      child: CardDetail(
+        museum: museum,
+      ),
     );
   }
 }
 
-class CardDetail extends StatelessWidget {
+class CardDetail extends StatefulWidget {
   const CardDetail({
     Key? key,
-    required this.name,
-    required this.city,
-    required this.rating,
+    required this.museum,
   }) : super(key: key);
 
-  final String name;
-  final String city;
-  final double rating;
+  final Museum museum;
+
+  @override
+  State<CardDetail> createState() => _CardDetailState();
+}
+
+class _CardDetailState extends State<CardDetail> {
+  bool isFavorite = false;
+
+  void updateButton() {
+    setState(() {
+      if (isFavorite) {
+        isFavorite = false;
+        user_1
+            .getFavoritMuseum()
+            .removeWhere((item) => item.id == widget.museum.getId());
+      } else {
+        isFavorite = true;
+        user_1.getFavoritMuseum().add(widget.museum);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    //refresh the page here
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    // cek apakah museum ini ada di favorite-nya user
+    for (int i = 0; i < user_1.getFavoritMuseum().length; i++) {
+      if (identical(widget.museum, user_1.getFavoritMuseum()[i])) {
+        isFavorite = true;
+        break;
+      }
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
@@ -126,7 +159,7 @@ class CardDetail extends StatelessWidget {
               children: [
                 // nama museum
                 Text(
-                  name,
+                  widget.museum.getNama(),
                   style: const TextStyle(
                     color: Color(0xFFE0E1DD),
                     fontSize: 20,
@@ -148,7 +181,7 @@ class CardDetail extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        city,
+                        widget.museum.getAlamatKota(),
                         style: const TextStyle(
                           color: Color(0xFFE0E1DD),
                           fontSize: 15,
@@ -176,7 +209,7 @@ class CardDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          rating.toString(),
+                          widget.museum.getRating().toString(),
                           style: const TextStyle(
                             color: Color(0xFF555B6E),
                             fontSize: 15,
@@ -220,10 +253,14 @@ class CardDetail extends StatelessWidget {
                   ],
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.favorite),
+                  icon: (isFavorite)
+                      ? const Icon(Icons.favorite)
+                      : const Icon(Icons.favorite_border_rounded),
                   color: const Color(0xFFDA3E52),
                   iconSize: 30,
-                  onPressed: () {/* Your code */},
+                  onPressed: () {
+                    updateButton();
+                  },
                 ),
               ),
 
@@ -243,3 +280,146 @@ class CardDetail extends StatelessWidget {
     );
   }
 }
+
+// class CardDetail extends StatelessWidget {
+//   const CardDetail({
+//     Key? key,
+//     required this.museum,
+//   }) : super(key: key);
+
+//   final Museum museum;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       padding: const EdgeInsets.symmetric(
+//         horizontal: 15,
+//         vertical: kDefaultPadding,
+//       ),
+//       child: Row(
+//         children: [
+//           Expanded(
+//             flex: 10,
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.end,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 // nama museum
+//                 Text(
+//                   museum.getNama(),
+//                   style: const TextStyle(
+//                     color: Color(0xFFE0E1DD),
+//                     fontSize: 20,
+//                     fontWeight: FontWeight.w500,
+//                     fontFamily: "Cera Round Pro",
+//                   ),
+//                 ),
+
+//                 // kota museum
+//                 Container(
+//                   padding: const EdgeInsets.only(top: 5),
+//                   child: Row(
+//                     children: [
+//                       const Icon(
+//                         Icons.location_on,
+//                         color: Color(0xFF778DA9),
+//                       ),
+//                       const SizedBox(
+//                         width: 5,
+//                       ),
+//                       Text(
+//                         museum.getAlamatKota(),
+//                         style: const TextStyle(
+//                           color: Color(0xFFE0E1DD),
+//                           fontSize: 15,
+//                           fontWeight: FontWeight.w700,
+//                           fontFamily: "Cera Round Pro",
+//                         ),
+//                       )
+//                     ],
+//                   ),
+//                 ),
+
+//                 // rating museum
+//                 FittedBox(
+//                   child: Container(
+//                     margin: const EdgeInsets.only(top: 5),
+//                     padding: const EdgeInsets.all(5),
+//                     decoration: BoxDecoration(
+//                       color: const Color(0xFFF5FCFF).withOpacity(0.5),
+//                       borderRadius: const BorderRadius.all(
+//                         Radius.circular(12),
+//                       ),
+//                     ),
+//                     child: Row(
+//                       crossAxisAlignment: CrossAxisAlignment.center,
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Text(
+//                           museum.getRating().toString(),
+//                           style: const TextStyle(
+//                             color: Color(0xFF555B6E),
+//                             fontSize: 15,
+//                             fontWeight: FontWeight.w700,
+//                             fontFamily: "Cera Round Pro 2",
+//                           ),
+//                         ),
+//                         const SizedBox(
+//                           width: 5,
+//                         ),
+//                         const Icon(
+//                           Icons.star,
+//                           color: Colors.amber,
+//                           size: 20,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               // favorite button
+//               Container(
+//                 decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.circular(50.0),
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: const Color(0xFF808080).withOpacity(0.25),
+//                       offset: const Offset(
+//                         3.0,
+//                         3.0,
+//                       ),
+//                       blurRadius: 2.5,
+//                       spreadRadius: 0.5,
+//                     ), //BoxShadow
+//                   ],
+//                 ),
+//                 child: IconButton(
+//                   icon: const Icon(Icons.favorite),
+//                   color: const Color(0xFFDA3E52),
+//                   iconSize: 30,
+//                   onPressed: () {/* Your code */},
+//                 ),
+//               ),
+
+//               // chevron icon
+//               Container(
+//                 alignment: Alignment.bottomCenter,
+//                 child: const Icon(
+//                   Icons.chevron_right_sharp,
+//                   color: Color(0xFFE0E1DD),
+//                   size: 35,
+//                 ),
+//               ),
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

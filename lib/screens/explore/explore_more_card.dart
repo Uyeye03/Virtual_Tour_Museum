@@ -6,17 +6,26 @@ import 'package:virtual_tour_museum/screens/explore/explore_card_body.dart';
 class ExploreMoreCard extends StatelessWidget {
   const ExploreMoreCard({
     Key? key,
-    required this.size,
+    required this.index,
+    required this.length,
     required this.museum,
   }) : super(key: key);
 
-  final Size size;
+  final int index;
+  final int length;
   final Museum museum;
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      margin: EdgeInsets.only(
+        left: 20,
+        top: (index == 0) ? 20 : 10,
+        right: 20,
+        bottom: (index == length - 1) ? 20 : 10,
+      ),
       width: size.width,
       height: size.height * 0.4,
       decoration: BoxDecoration(

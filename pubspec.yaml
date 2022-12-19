@@ -41,6 +41,7 @@ dependencies:
   rflutter_alert: ^2.0.4
   http: ^0.13.5
   sn_progress_dialog: ^1.0.8
+  # fluttertoast: ^8.1.2
 
 dev_dependencies:
   flutter_test:

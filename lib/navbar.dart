@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_tour_museum/constants.dart';
 import 'package:virtual_tour_museum/screens/explore/explore.dart';
 import 'package:virtual_tour_museum/screens/favorites/favorites.dart';
 import 'package:virtual_tour_museum/screens/home/home.dart';

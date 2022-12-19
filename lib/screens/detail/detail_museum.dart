@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
+import 'package:virtual_tour_museum/models/user.dart';
 import 'package:virtual_tour_museum/screens/detail/detail_view_museum.dart';
 import 'package:virtual_tour_museum/widgets/comment_card.dart';
 
@@ -14,9 +15,33 @@ class DetailMuseum extends StatefulWidget {
 }
 
 class _DetailMuseumState extends State<DetailMuseum> {
+  bool isFavorite = false;
+
+  void updateButton() {
+    setState(() {
+      if (isFavorite) {
+        isFavorite = false;
+        user_1
+            .getFavoritMuseum()
+            .removeWhere((item) => item.id == widget.museum.getId());
+      } else {
+        isFavorite = true;
+        user_1.getFavoritMuseum().add(widget.museum);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
+    // cek apakah museum ini ada di favorite-nya user
+    for (int i = 0; i < user_1.getFavoritMuseum().length; i++) {
+      if (identical(widget.museum, user_1.getFavoritMuseum()[i])) {
+        isFavorite = true;
+        break;
+      }
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -63,15 +88,23 @@ class _DetailMuseumState extends State<DetailMuseum> {
                           ),
 
                           // favorite button
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white.withOpacity(0.6),
-                            ),
-                            child: const Icon(
-                              Icons.favorite_border_outlined,
-                              color: Colors.blue,
+                          InkWell(
+                            onTap: updateButton,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white.withOpacity(0.6),
+                              ),
+                              child: (isFavorite)
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      color: Color(0xFFDA3E52),
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_border_rounded,
+                                      color: Color(0xFFDA3E52),
+                                    ),
                             ),
                           ),
                         ],
@@ -188,12 +221,12 @@ class _DetailMuseumState extends State<DetailMuseum> {
                       colorClickableText: const Color(0xFF89B0AE),
                       trimMode: TrimMode.Length,
                       trimLength: 120,
-                      textAlign: TextAlign.justify,
+                      // textAlign: TextAlign.justify,
                       style: const TextStyle(
                         color: Color(0xFF444444),
                         fontFamily: "Cera Round Pro 2",
                         fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                         height: 1.5,
                       ),
                     ),
@@ -225,12 +258,12 @@ class _DetailMuseumState extends State<DetailMuseum> {
                     const SizedBox(height: 5),
                     Text(
                       widget.museum.getAlamatLengkap(),
-                      textAlign: TextAlign.justify,
+                      // textAlign: TextAlign.justify,
                       style: const TextStyle(
                         color: Color(0xFF444444),
                         fontFamily: "Cera Round Pro 2",
                         fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                         height: 1.5,
                       ),
                     ),
@@ -316,20 +349,57 @@ class _DetailMuseumState extends State<DetailMuseum> {
                     const SizedBox(height: 10),
 
                     // view comments
-                    ListView.builder(
-                      itemCount: widget.museum.getListKomentar().length,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(vertical: 12.0),
-                          child: CommentCard(
-                            komentar: widget.museum.getListKomentar()[index],
-                          ),
-                        );
-                      },
-                    )
+                    (widget.museum.getListKomentar().isEmpty)
+                        ? Container(
+                            margin: const EdgeInsets.only(top: 10, bottom: 20),
+                            width: size.width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    'assets/images/feedback.png',
+                                    height: size.height * 0.2,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                const Text(
+                                  "No comments yet",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                const Text(
+                                  "Be the first one to comment!",
+                                  style: TextStyle(
+                                    color: Color(0xFFADA4A5),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: widget.museum.getListKomentar().length,
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 12.0),
+                                child: CommentCard(
+                                  komentar:
+                                      widget.museum.getListKomentar()[index],
+                                ),
+                              );
+                            },
+                          )
                   ],
                 ),
               ),

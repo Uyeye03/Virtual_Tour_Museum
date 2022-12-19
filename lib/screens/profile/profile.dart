@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xff0D1B2A),
+                  color: Color(0xFF555B6E),
                 ),
                 child: const Icon(
                   Icons.account_circle_outlined,
@@ -127,13 +127,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildAbout() {
     //Citizen Journalism
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.book_outlined),
         style: ElevatedButton.styleFrom(
             elevation: 2,
             // backgroundColor: Color(0xffEEF6FF),
-            primary: const Color(0xffEEF6FF),
+            primary: const Color(0xFFE2EFFF),
             // foregroundColor: Color.fromARGB(255, 44, 55, 134),
             onPrimary: const Color(0xff0D1B2A),
             minimumSize: const Size.fromHeight(45),
@@ -147,7 +147,8 @@ class _ProfilePageState extends State<ProfilePage> {
         label: const Text(
           "About",
           style: TextStyle(
-            fontSize: 14,
+            fontFamily: "Cera Round Pro 2",
+            fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
           ),
@@ -158,13 +159,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildClearCache() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.delete_outline_outlined),
         style: ElevatedButton.styleFrom(
             elevation: 2,
             // backgroundColor: Color(0xffEEF6FF),
-            primary: const Color(0xffEEF6FF),
+            primary: const Color(0xFFE2EFFF),
             // foregroundColor: Color.fromARGB(255, 44, 55, 134),
             onPrimary: const Color(0xff0D1B2A),
             minimumSize: const Size.fromHeight(45),
@@ -173,11 +174,12 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.circular(10),
             )),
         onPressed: () {
-          // navigate ke survey
+          // do clear cache
         },
         label: const Text(
           "Clear Cache",
           style: TextStyle(
+            fontFamily: "Cera Round Pro 2",
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -190,13 +192,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildPrivacyPolicy() {
     //Privacy and Policy
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.security_outlined),
         style: ElevatedButton.styleFrom(
             elevation: 2,
             // backgroundColor: Color(0xffEEF6FF),
-            primary: const Color(0xffEEF6FF),
+            primary: const Color(0xFFE2EFFF),
             // foregroundColor: Color.fromARGB(255, 44, 55, 134),
             onPrimary: const Color(0xff0D1B2A),
             minimumSize: const Size.fromHeight(45),
@@ -210,6 +212,7 @@ class _ProfilePageState extends State<ProfilePage> {
         label: const Text(
           "Privacy and Policy",
           style: TextStyle(
+            fontFamily: "Cera Round Pro 2",
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -222,7 +225,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildLogout() {
     //Logout
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.logout_rounded),
         style: ElevatedButton.styleFrom(
@@ -242,6 +245,7 @@ class _ProfilePageState extends State<ProfilePage> {
         label: const Text(
           "Logout",
           style: TextStyle(
+            fontFamily: "Cera Round Pro 2",
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.white,
@@ -262,13 +266,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _buildLogin() {
     //Login
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25, 0, 25, 10),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 15),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.login_rounded),
         style: ElevatedButton.styleFrom(
             elevation: 2,
             // backgroundColor: Color.fromARGB(255, 44, 55, 134),
-            primary: const Color(0xff0D1B2A),
+            primary: const Color(0xFF555B6E),
             // foregroundColor: Color(0xffEEF6FF),
             onPrimary: const Color(0xffEEF6FF),
             minimumSize: const Size.fromHeight(45),
@@ -283,6 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
         label: const Text(
           "Login",
           style: TextStyle(
+            fontFamily: "Cera Round Pro 2",
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.white,

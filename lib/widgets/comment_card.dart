@@ -100,12 +100,12 @@ class CommentCard extends StatelessWidget {
                 // isi komentar
                 Text(
                   komentar.getKomentar(),
-                  textAlign: TextAlign.justify,
+                  // textAlign: TextAlign.justify,
                   style: const TextStyle(
                     color: Color(0xFF444444),
                     fontFamily: "Cera Round Pro 2",
                     fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w400,
                     height: 1.5,
                   ),
                 )

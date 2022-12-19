@@ -167,22 +167,22 @@ Museum museum_1 = Museum(
   rating: 4.5,
   countRate: 0,
   listKomentar: [
-    Comment(
-      id: 0,
-      museumId: 0,
-      namaPengunggah: "Wendy Santoso",
-      tanggalUnggah: "24-09-2022",
-      komentar:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio a mauris ultrices varius quis in diam. Quisque sit amet augue elit. Nulla convallis eget nisl in varius.",
-    ),
-    Comment(
-      id: 1,
-      museumId: 0,
-      namaPengunggah: "Clarissa Angelia",
-      tanggalUnggah: "27-09-2022",
-      komentar:
-          "Nullam vitae lacus ligula. Vivamus ultrices ultricies libero sed faucibus. Integer elementum porttitor libero, sed placerat enim efficitur semper. Cras imperdiet metus sed nisi egestas malesuada. ",
-    ),
+    // Comment(
+    //   id: 0,
+    //   museumId: 0,
+    //   namaPengunggah: "Wendy Santoso",
+    //   tanggalUnggah: "24-09-2022",
+    //   komentar:
+    //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio a mauris ultrices varius quis in diam. Quisque sit amet augue elit. Nulla convallis eget nisl in varius.",
+    // ),
+    // Comment(
+    //   id: 1,
+    //   museumId: 0,
+    //   namaPengunggah: "Clarissa Angelia",
+    //   tanggalUnggah: "27-09-2022",
+    //   komentar:
+    //       "Nullam vitae lacus ligula. Vivamus ultrices ultricies libero sed faucibus. Integer elementum porttitor libero, sed placerat enim efficitur semper. Cras imperdiet metus sed nisi egestas malesuada. ",
+    // ),
   ],
 );
 

@@ -94,5 +94,6 @@ User user_1 = User(
   email: "c14200036@john.petra.ac.id",
   noTelp: "085106777266",
   favoritMuseum: [museum_3, museum_2, museum_1],
+  // favoritMuseum: [],
   komentar: [],
 );
