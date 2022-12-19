@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:virtual_tour_museum/models/comment.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
 import 'package:virtual_tour_museum/models/user.dart';
 import 'package:virtual_tour_museum/screens/detail/detail_view_museum.dart';
@@ -17,6 +18,10 @@ class DetailMuseum extends StatefulWidget {
 class _DetailMuseumState extends State<DetailMuseum> {
   bool isFavorite = false;
 
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final commentController = TextEditingController();
+
   void updateButton() {
     setState(() {
       if (isFavorite) {
@@ -28,6 +33,31 @@ class _DetailMuseumState extends State<DetailMuseum> {
         isFavorite = true;
         user_1.getFavoritMuseum().add(widget.museum);
       }
+    });
+  }
+
+  void uploadComment(String isiComment) {
+    setState(() {
+      // get current date
+      DateTime now = DateTime.now();
+      DateTime date = DateTime(now.year, now.month, now.day);
+
+      // create new comment instance
+      Comment newComment = Comment(
+          id: listComment.length,
+          museumId: widget.museum.getId(),
+          namaPengunggah: user_1.getNama(),
+          tanggalUnggah: date.toString().replaceAll("00:00:00.000", ""),
+          komentar: isiComment);
+
+      // save to user comment list
+      user_1.getKomentar().add(newComment);
+
+      // add to overall comment list
+      listComment.add(newComment);
+
+      // add to museum comment list
+      widget.museum.getListKomentar().add(newComment);
     });
   }
 
@@ -308,6 +338,7 @@ class _DetailMuseumState extends State<DetailMuseum> {
                               color: Colors.grey.shade100,
                             ),
                             child: TextField(
+                              controller: commentController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Input your comment",
@@ -324,23 +355,102 @@ class _DetailMuseumState extends State<DetailMuseum> {
                         const SizedBox(width: 10),
 
                         // button submit
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue.shade400,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.blue.shade400.withOpacity(0.6),
-                                offset: Offset.zero,
-                                spreadRadius: 2.5,
-                                blurRadius: 10,
-                              ),
-                            ],
-                          ),
-                          child: const Icon(
-                            Icons.comment,
-                            color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            if (commentController.text == "") {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: const Text(
+                                    'Comment is empty!',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  content: const Text(
+                                    'Write some comment before upload it.',
+                                    style: TextStyle(
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(
+                                          context,
+                                          'OK',
+                                        );
+                                      },
+                                      child: const Text(
+                                        'OK',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            } else {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: const Text(
+                                    'Upload your comment?',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  content: const Text(
+                                    'Once uploaded it cannot be changed anymore',
+                                    style: TextStyle(
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                        context,
+                                        'Cancel',
+                                      ),
+                                      child: const Text(
+                                        'Cancel',
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        uploadComment(commentController.text);
+                                        commentController
+                                            .clear(); // clear text field
+                                        Navigator.pop(
+                                          context,
+                                          'YES',
+                                        );
+                                      },
+                                      child: const Text(
+                                        'YES',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.blue.shade400,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blue.shade400.withOpacity(0.6),
+                                  offset: Offset.zero,
+                                  spreadRadius: 2.5,
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.comment,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],

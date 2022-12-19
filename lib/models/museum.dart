@@ -167,22 +167,8 @@ Museum museum_1 = Museum(
   rating: 4.5,
   countRate: 0,
   listKomentar: [
-    // Comment(
-    //   id: 0,
-    //   museumId: 0,
-    //   namaPengunggah: "Wendy Santoso",
-    //   tanggalUnggah: "24-09-2022",
-    //   komentar:
-    //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio a mauris ultrices varius quis in diam. Quisque sit amet augue elit. Nulla convallis eget nisl in varius.",
-    // ),
-    // Comment(
-    //   id: 1,
-    //   museumId: 0,
-    //   namaPengunggah: "Clarissa Angelia",
-    //   tanggalUnggah: "27-09-2022",
-    //   komentar:
-    //       "Nullam vitae lacus ligula. Vivamus ultrices ultricies libero sed faucibus. Integer elementum porttitor libero, sed placerat enim efficitur semper. Cras imperdiet metus sed nisi egestas malesuada. ",
-    // ),
+    comment1,
+    comment2,
   ],
 );
 
@@ -199,22 +185,8 @@ Museum museum_2 = Museum(
   rating: 4.6,
   countRate: 0,
   listKomentar: [
-    Comment(
-      id: 3,
-      museumId: 1,
-      namaPengunggah: "Jennifer Oentoro",
-      tanggalUnggah: "30-09-2022",
-      komentar:
-          "Praesent venenatis sit amet nibh nec gravida. Ut ultrices consequat odio sed congue. Pellentesque in dictum elit. Vivamus vel volutpat eros. Nam quis fringilla arcu. Proin vel dignissim odio, molestie condimentum quam.",
-    ),
-    Comment(
-      id: 4,
-      museumId: 1,
-      namaPengunggah: "Eric Tedja",
-      tanggalUnggah: "05-10-2022",
-      komentar:
-          "Pellentesque quis volutpat nisi, at ultrices dolor. Aenean eleifend, augue dapibus faucibus feugiat, urna mauris tincidunt est, eu iaculis dolor sem non nisl. Phasellus in dui finibus, congue enim vitae, tempor dui. Nulla facilisi. Donec molestie non lacus sit amet tempor.",
-    ),
+    comment3,
+    comment4,
   ],
 );
 
@@ -231,22 +203,8 @@ Museum museum_3 = Museum(
   rating: 4.2,
   countRate: 0,
   listKomentar: [
-    Comment(
-      id: 5,
-      museumId: 2,
-      namaPengunggah: "Jeremy Dion P.",
-      tanggalUnggah: "10-10-2022",
-      komentar:
-          "Nullam ac pulvinar arcu, sed interdum est. Pellentesque quis scelerisque velit. Phasellus dapibus dui at tempor dapibus.",
-    ),
-    Comment(
-      id: 6,
-      museumId: 2,
-      namaPengunggah: "Juan Christopher R. T.",
-      tanggalUnggah: "18-10-2022",
-      komentar:
-          "Fusce vitae tellus ac ante condimentum porta. Proin ex quam, porta rutrum dapibus quis, blandit eu nibh. In hac habitasse platea dictumst. Nullam congue dignissim vehicula.",
-    ),
+    comment5,
+    comment6,
   ],
 );
 

@@ -95,5 +95,5 @@ User user_1 = User(
   noTelp: "085106777266",
   favoritMuseum: [museum_3, museum_2, museum_1],
   // favoritMuseum: [],
-  komentar: [],
+  komentar: [comment1],
 );
