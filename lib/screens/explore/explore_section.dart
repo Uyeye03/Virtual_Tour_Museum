@@ -25,9 +25,10 @@ class ExploreSection extends StatelessWidget {
       children: [
         // section title
         SectionHeading(
-            museums: museums,
-            sectionTitle: sectionTitle,
-            sectionDescription: sectionDescription),
+          museums: museums,
+          sectionTitle: sectionTitle,
+          sectionDescription: sectionDescription,
+        ),
 
         // list museums
         SectionBody(museums: museums),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
 import 'package:virtual_tour_museum/screens/detail/detail_museum.dart';
 
@@ -153,14 +154,29 @@ class _SearchPageState extends State<SearchPage> {
                                 Icons.chevron_right_rounded,
                                 color: Color(0xFF555B6E),
                               ),
-                              leading: ClipRRect(
+                              leading: ImageNetwork(
+                                image: display_list[index].getGambarUtama(),
+                                width: size.width * 0.25,
+                                height: 225,
+                                fitAndroidIos: BoxFit.cover,
+                                fitWeb: BoxFitWeb.cover,
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  'assets/images/' +
-                                      display_list[index].getGambarUtama(),
-                                  fit: BoxFit.cover,
+                                onLoading: const CircularProgressIndicator(
+                                  color: Color(0xFF89B0AE),
+                                ),
+                                onError: const Icon(
+                                  Icons.error,
+                                  color: Colors.red,
                                 ),
                               ),
+                              // ClipRRect(
+                              //   borderRadius: BorderRadius.circular(10),
+                              //   child: Image.asset(
+                              //     'assets/images/' +
+                              //         display_list[index].getGambarUtama(),
+                              //     fit: BoxFit.cover,
+                              //   ),
+                              // ),
                             ),
                           ),
                         ),

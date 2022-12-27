@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:readmore/readmore.dart';
 import 'package:virtual_tour_museum/models/comment.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
@@ -87,12 +88,26 @@ class _DetailMuseumState extends State<DetailMuseum> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        'assets/images/' + widget.museum.getGambarUtama(),
+                      child: ImageNetwork(
+                        image: widget.museum.getGambarUtama(),
                         width: size.width,
                         height: size.height * 0.5,
-                        fit: BoxFit.cover,
+                        fitAndroidIos: BoxFit.cover,
+                        fitWeb: BoxFitWeb.cover,
+                        onLoading: const CircularProgressIndicator(
+                          color: Color(0xFF89B0AE),
+                        ),
+                        onError: const Icon(
+                          Icons.error,
+                          color: Colors.red,
+                        ),
                       ),
+                      //     Image.asset(
+                      //   'assets/images/' + widget.museum.getGambarUtama(),
+                      //   width: size.width,
+                      //   height: size.height * 0.5,
+                      //   fit: BoxFit.cover,
+                      // ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),

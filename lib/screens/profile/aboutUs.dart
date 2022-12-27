@@ -39,15 +39,34 @@ class AboutUsPage extends StatelessWidget {
                 // description
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  child: const Text(
-                    "Aplikasi Exum 360° merupakan sebuah platform dimana user dapat mengunjungi museum-museum di Indonesia secara virtual atau disebut dengan aplikasi Virtual Tour Museum. Aplikasi ini menggunakan software 3DVista untuk pembuatan virtual tour nya dan framework Flutter sebagai codebase untuk mengembangkan aplikasi. Diharapkan aplikasi ini dapat berguna sebagai sarana promosi serta pengenalan budaya dan sejarah Indonesia ke masyarakat terutama generasi muda.",
+                  child:
+                      // const Text(
+                      // "Aplikasi Exum 360° merupakan sebuah platform dimana user dapat mengunjungi museum-museum di Indonesia secara virtual atau disebut dengan aplikasi Virtual Tour Museum. Aplikasi ini menggunakan software 3DVista untuk pembuatan virtual tour nya dan framework Flutter sebagai codebase untuk mengembangkan aplikasi. Diharapkan aplikasi ini dapat berguna sebagai sarana promosi serta pengenalan budaya dan sejarah Indonesia ke masyarakat terutama generasi muda.",
+                      //   textAlign: TextAlign.center,
+                      // style: TextStyle(
+                      //   color: Color(0xFF444444),
+                      //   fontFamily: "Cera Round Pro 2",
+                      //   fontSize: 16,
+                      //   fontWeight: FontWeight.w400,
+                      //   height: 1.5,
+                      // ),
+                      // ),
+                      RichText(
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xFF444444),
-                      fontFamily: "Cera Round Pro 2",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      height: 1.5,
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Color(0xFF444444),
+                        fontFamily: "Cera Round Pro 2",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                      ),
+                      children: [
+                        TextSpan(
+                          text:
+                              'Aplikasi Exum 360° merupakan sebuah platform dimana user dapat mengunjungi museum-museum di Indonesia secara virtual atau disebut dengan aplikasi Virtual Tour Museum. Aplikasi ini menggunakan software 3DVista untuk pembuatan virtual tour nya dan framework Flutter sebagai codebase untuk mengembangkan aplikasi. Diharapkan aplikasi ini dapat berguna sebagai sarana promosi serta pengenalan budaya dan sejarah Indonesia ke masyarakat terutama generasi muda.',
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -62,6 +81,11 @@ class AboutUsPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
+                ),
+                Container(
+                  height: 5,
+                  width: 100,
+                  color: const Color(0xFFBEE3DB),
                 ),
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),

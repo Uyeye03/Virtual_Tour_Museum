@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:virtual_tour_museum/constants.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
 import 'package:virtual_tour_museum/models/user.dart';
@@ -47,13 +48,32 @@ class MuseumCard extends StatelessWidget {
                   color: kShadowColor,
                 ),
               ],
-              image: DecorationImage(
-                image: AssetImage('assets/images/' + museum.getGambarUtama()),
-                fit: BoxFit.cover,
-              ),
+              // image: DecorationImage(
+              //   image: AssetImage('assets/images/' + museum.getGambarUtama()),
+              //   fit: BoxFit.cover,
+              // ),
             ),
-            child: CardBody(
-              museum: museum,
+            child: Stack(
+              children: [
+                ImageNetwork(
+                  image: museum.getGambarUtama(),
+                  width: size.width,
+                  height: size.height * 0.5,
+                  fitAndroidIos: BoxFit.cover,
+                  fitWeb: BoxFitWeb.cover,
+                  borderRadius: BorderRadius.circular(20),
+                  onLoading: const CircularProgressIndicator(
+                    color: Color(0xFF89B0AE),
+                  ),
+                  onError: const Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  ),
+                ),
+                CardBody(
+                  museum: museum,
+                ),
+              ],
             ),
           ),
         ),

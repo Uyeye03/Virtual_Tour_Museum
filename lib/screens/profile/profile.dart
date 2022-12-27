@@ -153,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
           );
         },
         label: const Text(
-          "About",
+          "About Us",
           style: TextStyle(
             fontFamily: "Cera Round Pro 2",
             fontSize: 16,

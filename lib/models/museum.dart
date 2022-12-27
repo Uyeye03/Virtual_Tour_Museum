@@ -156,7 +156,9 @@ class Museum {
 Museum museum_1 = Museum(
   id: 1,
   nama: 'Museum 10 November',
-  gambarUtama: 'museum_10_november.jpg',
+  // gambarUtama: 'museum_10_november.jpg',
+  gambarUtama:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Museum_10_November.jpg/799px-Museum_10_November.jpg',
   alamatLengkap:
       'Pahlawan St, Alun-alun Contong, Bubutan, Surabaya City, East Java',
   alamatKota: 'Surabaya',
@@ -175,7 +177,9 @@ Museum museum_1 = Museum(
 Museum museum_2 = Museum(
   id: 2,
   nama: 'Museum Majapahit',
-  gambarUtama: 'museum_majapahit_trowulan.jpg',
+  // gambarUtama: 'museum_majapahit_trowulan.jpg',
+  gambarUtama:
+      'https://assets.kompasiana.com/items/album/2021/10/10/20211009-214342-6161dc5324da9214963a13a4.jpg?t=o&v=740&x=416',
   alamatLengkap: 'Pendopo Agung St, Ngelinguk, Trowulan, Mojokerto, East Java',
   alamatKota: 'Mojokerto',
   deskripsi:
@@ -193,7 +197,9 @@ Museum museum_2 = Museum(
 Museum museum_3 = Museum(
   id: 3,
   nama: 'Museum Pendidikan Surabaya',
-  gambarUtama: 'museum_pendidikan_surabaya.jpg',
+  // gambarUtama: 'museum_pendidikan_surabaya.jpg',
+  gambarUtama:
+      'https://www.retorika.id/gambar_artikel/362019-11-30%2005.29.42%201.jpg',
   alamatLengkap: 'Genteng Kali St. No.10, Genteng, Surabaya City, East Java',
   alamatKota: 'Surabaya',
   deskripsi:

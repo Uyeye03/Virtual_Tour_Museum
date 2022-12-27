@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:virtual_tour_museum/models/museum.dart';
 
 class ExploreCardImage extends StatelessWidget {
@@ -19,12 +20,26 @@ class ExploreCardImage extends StatelessWidget {
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
-        child: Image.asset(
-          'assets/images/' + museum.getGambarUtama(),
+        child: ImageNetwork(
+          image: museum.getGambarUtama(),
           width: size.width,
           height: size.height * 0.2,
-          fit: BoxFit.cover,
+          fitAndroidIos: BoxFit.cover,
+          fitWeb: BoxFitWeb.cover,
+          onLoading: const CircularProgressIndicator(
+            color: Color(0xFF89B0AE),
+          ),
+          onError: const Icon(
+            Icons.error,
+            color: Colors.red,
+          ),
         ),
+        //     Image.asset(
+        //   'assets/images/' + museum.getGambarUtama(),
+        //   width: size.width,
+        //   height: size.height * 0.2,
+        //   fit: BoxFit.cover,
+        // ),
       ),
     );
   }
